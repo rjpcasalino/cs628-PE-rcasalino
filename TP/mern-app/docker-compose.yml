@@ -1,0 +1,39 @@
+version: '3'
+services:
+  express:
+    build: ./express
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_URI=mongodb://root:example@mongo:27017/
+      - DEBUG=app:*
+
+    networks: 
+    - ip6net
+    ports:
+      - "1924:1924" # express default
+      - "[::1]:3000:3000"
+
+  mongo:
+    build: ./mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+    networks: 
+      - ip6net
+    ports:
+      - "2415:2415"
+      - "[::1]:27017:27017"
+
+volumes:
+  db-data:
+
+networks:
+  ip6net:
+     enable_ipv6: true
+     ipam:
+       config:
+         - subnet: 2001:db8::/64
+
