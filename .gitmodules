@@ -1,3 +1,6 @@
 [submodule "TP/mernnnnn"]
 	path = TP/mernnnnn
 	url = git@github.com:rjpcasalino/mernnnnn.git
+[submodule "address-book"]
+	path = address-book
+	url = git@github.com:rjpcasalino/react-router-demo.git
