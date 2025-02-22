@@ -4,3 +4,6 @@
 [submodule "address-book"]
 	path = address-book
 	url = git@github.com:rjpcasalino/react-router-demo.git
+[submodule "PE04/my-react-router-app"]
+	path = PE04/my-react-router-app
+	url = git@github.com:rjpcasalino/PE04-cities.git
