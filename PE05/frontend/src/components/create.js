@@ -17,100 +17,82 @@ export default function Create() {
    });
  }
  
- // This function will handle the submission.
  async function onSubmit(e) {
-   e.preventDefault();
+  e.preventDefault();
+
+  // When a post request is sent to the create url, we'll add a new recipe to the database.
+  const newRecipe = { ...form };
+
+  await fetch(`${backendUrl}/record`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newRecipe),
+  })
+  .catch(error => {
+    window.alert(error);
+    return;
+  });
+
+  setForm({ title: "", ingredients: "", instructions: "", servings: "" });
+  navigate("/home");
+}
+
  
-   // When a post request is sent to the create url, we'll add a new record to the database.
-   const newPerson = { ...form };
- 
-   await fetch(`${backendUrl}/record`, {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify(newPerson),
-   })
-   .catch(error => {
-     window.alert(error);
-     return;
-   });
- 
-   setForm({ name: "", position: "", level: "" });
-   navigate("/home");
- }
- 
- // This following section will display the form that takes the input from the user.
- return (
-   <div>
-     <h3>Create New Record</h3>
-     <form onSubmit={onSubmit}>
-       <div className="form-group">
-         <label htmlFor="name">Name</label>
-         <input
-           type="text"
-           className="form-control"
-           id="name"
-           value={form.name}
-           onChange={(e) => updateForm({ name: e.target.value })}
-         />
-       </div>
-       <div className="form-group">
-         <label htmlFor="position">Position</label>
-         <input
-           type="text"
-           className="form-control"
-           id="position"
-           value={form.position}
-           onChange={(e) => updateForm({ position: e.target.value })}
-         />
-       </div>
-       <div className="form-group">
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionIntern"
-             value="Intern"
-             checked={form.level === "Intern"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionIntern" className="form-check-label">Intern</label>
-         </div>
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionJunior"
-             value="Junior"
-             checked={form.level === "Junior"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionJunior" className="form-check-label">Junior</label>
-         </div>
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionSenior"
-             value="Senior"
-             checked={form.level === "Senior"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionSenior" className="form-check-label">Senior</label>
-         </div>
-       </div>
-       <div className="form-group">
-         <input
-           type="submit"
-           value="Create person"
-           className="btn btn-primary"
-         />
-       </div>
-     </form>
-   </div>
- );
+return (
+  <div>
+    <h3>Create New Recipe</h3>
+    <form onSubmit={onSubmit}>
+      <div className="form-group">
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          className="form-control"
+          id="title"
+          value={form.title}
+          onChange={(e) => updateForm({ title: e.target.value })}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="ingredients">Ingredients</label>
+        <input
+          type="text"
+          className="form-control"
+          id="ingredients"
+          value={form.ingredients}
+          onChange={(e) => updateForm({ ingredients: e.target.value })}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="instructions">Instructions</label>
+        <input
+          type="text"
+          className="form-control"
+          id="instructions"
+          value={form.instructions}
+          onChange={(e) => updateForm({ instructions: e.target.value })}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="servings">Servings</label>
+        <input
+          type="number"
+          className="form-control"
+          id="servings"
+          value={form.servings}
+          onChange={(e) => updateForm({ servings: e.target.value })}
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="submit"
+          value="Create recipe"
+          className="btn btn-primary"
+        />
+      </div>
+    </form>
+  </div>
+);
+
 }
