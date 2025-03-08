@@ -4,9 +4,11 @@ import Navbar from "./navbar";
  
 const Record = (props) => (
  <tr>
-   <td>{props.record.name}</td>
-   <td>{props.record.position}</td>
-   <td>{props.record.level}</td>
+   <td>{props.record.title}</td>
+   <td>{props.record.ingredients}</td>
+   <td>{props.record.instructions}</td>
+   <td>{props.record.servings}</td>
+
    <td>
      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
      <button className="btn btn-link"
@@ -75,10 +77,10 @@ const backendUrl = "http://localhost:5050";
      <table className="table table-striped" style={{ marginTop: 20 }}>
        <thead>
          <tr>
-           <th>Name</th>
-           <th>Position</th>
-           <th>Level</th>
-           <th>Action</th>
+           <th>Title</th>
+           <th>Ingredients</th>
+           <th>Instructions</th>
+           <th>Servings</th>
          </tr>
        </thead>
        <tbody>{recordList()}</tbody>

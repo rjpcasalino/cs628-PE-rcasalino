@@ -3,9 +3,10 @@ import { useNavigate } from "react-router";
  
 export default function Create() {
  const [form, setForm] = useState({
-   name: "",
-   position: "",
-   level: "",
+  title: "",
+  ingredients: "",
+  instructions: "",
+  servings: 0,
  });
  const navigate = useNavigate();
  const backendUrl = "http://localhost:5050";
