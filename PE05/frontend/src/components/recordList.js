@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./navbar";
+import BasicTable from "../components/basicTable";
  
 const Record = (props) => (
  <tr>
@@ -73,18 +74,7 @@ const backendUrl = "http://localhost:5050";
  return (
    <div>
     <Navbar />
-     <h3>Record List</h3>
-     <table className="table table-striped" style={{ marginTop: 20 }}>
-       <thead>
-         <tr>
-           <th>Title</th>
-           <th>Ingredients</th>
-           <th>Instructions</th>
-           <th>Servings</th>
-         </tr>
-       </thead>
-       <tbody>{recordList()}</tbody>
-     </table>
+    <BasicTable/>
    </div>
  );
 }

@@ -5,9 +5,13 @@ import RecordList from "./components/recordList";
 import Edit from "./components/edit";
 import Create from "./components/create";
 
+// The next line is required for the css prop to work!
+/** @jsxImportSource @emotion/react */
+import { css, Global } from "@emotion/react";
 
 const App = () => {
   return (
+    <>
     <Router>
       <div>
         <Routes>
@@ -17,6 +21,7 @@ const App = () => {
         </Routes>
       </div>
     </Router>
+    </>
   );
 };
 

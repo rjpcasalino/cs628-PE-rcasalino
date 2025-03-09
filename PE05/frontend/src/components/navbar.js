@@ -5,6 +5,12 @@ import "bootstrap/dist/css/bootstrap.css";
  
 // We import NavLink to utilize the react router.
 import { NavLink } from "react-router-dom";
+
+import Button from '@mui/material/Button';
+ 
+function ButtonUsage() {
+  return <Button variant="contained">Create Record</Button>;
+}
  
 // Here, we display our Navbar
 export default function Navbar() {
@@ -30,7 +36,7 @@ export default function Navbar() {
          <ul className="navbar-nav ml-auto">
            <li className="nav-item">
              <NavLink className="nav-link" to="/create">
-               Create Record
+             <ButtonUsage/>
              </NavLink>
            </li>
          </ul>
